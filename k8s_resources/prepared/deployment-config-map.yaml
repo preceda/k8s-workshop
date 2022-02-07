@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-minimal
+  namespace: workshop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - image: nginx
+        ports:
+          - containerPort: 80
+        imagePullPolicy: IfNotPresent
+        name: nginx
+        volumeMounts:
+          - name: config-index
+            mountPath: "/usr/share/nginx/html"
+            readOnly: true
+      restartPolicy: Always
+      volumes:
+        - name: config-index
+          configMap:
+            name: html-index-configuration
+            items:
+              - key: "index.html"
+                path: "index.html"

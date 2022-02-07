@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-demo
+data:
+  number_initial: "3"
+  key: "value"
+
+  # file-like keys
+  config.properties: |
+    file.key=file-value
+    file.number=5
+  second-config.properties: |
+    color.good=purple
+    color.bad=yellow
+    allow.textmode=true

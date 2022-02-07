@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-minimal
+  namespace: workshop
+spec:
+  containers:
+  - image: nginx
+    imagePullPolicy: IfNotPresent
+    name: nginx
+    volumeMounts:
+      - name: config
+        mountPath: "/config"
+        readOnly: true
+  restartPolicy: Never
+  volumes:
+    - name: config
+      configMap:
+        name: config-demo
+        items:
+          - key: "number_initial"
+            path: "number.conf"
+          - key: "config.properties"
+            path: "config.properties"
+          - key: "second-config.properties"
+            path: "name-for-second-file.properties"
