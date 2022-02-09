@@ -16,4 +16,4 @@ spec:
               service:
                 name: nginx-cluster-ip
                 port:
-                  number: 8080
+                  number: 5678
