@@ -9,3 +9,5 @@ spec:
     imagePullPolicy: IfNotPresent
     name: nginx
   restartPolicy: Never
+  imagePullSecrets:
+    - name: secret-docker-hub

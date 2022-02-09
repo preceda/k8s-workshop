@@ -4,6 +4,8 @@ metadata:
   name: nginx-minimal
   namespace: workshop
 spec:
+  imagePullSecrets:
+    - name: secret-docker-hub
   containers:
   - image: nginx
     imagePullPolicy: IfNotPresent

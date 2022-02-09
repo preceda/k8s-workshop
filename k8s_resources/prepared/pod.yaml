@@ -18,6 +18,8 @@ spec:
       name: kube-api-access-jmf7j
       readOnly: true
   restartPolicy: Never
+  imagePullSecrets:
+    - name: secret-docker-hub
   serviceAccountName: default
   terminationGracePeriodSeconds: 30
   volumes:
