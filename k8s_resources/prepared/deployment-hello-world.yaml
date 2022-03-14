@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world
+  namespace: workshop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - image: tkadlecp/hello_world_app:1.0
+        env:
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+        ports:
+          - containerPort: 8080
+        imagePullPolicy: IfNotPresent
+        name: hello-world
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: secret-docker-hub
