@@ -34,7 +34,7 @@ If you have file with resource, for example deployment with name "my-app.yaml", 
 ```kubectl apply -f path/to/file/my-app.yaml```
 
 ### kubectl commands
-####kubectl get pod -A
+#### kubectl get pod -A
 Gives you all pods in cluster. If you want pods only in specific namespace, replace "-A" with "-n namespaceName"
 #### kubectl describe pod POD_NAME -n NAMESPACE_NAME
 Describe pod with name POD_NAME in namespace NAMESPACE_NAME. 
